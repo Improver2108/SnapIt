@@ -1,0 +1,27 @@
+{
+    "name": "SnapIt",
+    "version": "1.0",
+    "description": "A simple screenshot extension that saves the screenshot in PDF or PNG",
+    "icons":{
+        "128":"icon128.png",
+        "48":"icon48.png",
+        "16":"icon16.png"
+    },
+    "page_action": {
+        "default_icon": "icon16.png",
+        "default_title": "Screenshot",
+        "default_popup":"popup.html"
+    },
+    "background":{
+        "scripts":["eventPage.js"],
+        "persistent":false
+    },
+    "content_scripts":[
+        {
+            "matches":["<all_urls>"],
+            "js":["content.js","./node_modules/html2canvas/dist/html2canvas.js","./node_modules/file-saver/dist/FileSaver.js","jspdf.min.js","jquery-3.5.1.js"]
+        }
+    ],
+    "permissions": ["tabs", "<all_urls>", "activeTab"],
+    "manifest_version": 2
+}
